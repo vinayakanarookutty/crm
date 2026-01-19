@@ -1,11 +1,23 @@
 import { MoreHorizontal, Mail, Phone, UserPlus, X } from "lucide-react";
 import { useState } from "react";
 
+// Employees available for assignment
 const employees = ["John", "Sarah", "David"];
 
+// Define TypeScript type for a Lead
+type Lead = {
+  id: number;
+  name: string;
+  destination: string;
+  source: string;
+  status: string;
+  score: number;
+  assignedTo: string;
+};
+
 const LeadTable = () => {
-  const [selectedLead, setSelectedLead] = useState(null);
-  const [leads, setLeads] = useState([
+  const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
+  const [leads, setLeads] = useState<Lead[]>([
     {
       id: 1,
       name: "Alice Thompson",
@@ -26,7 +38,8 @@ const LeadTable = () => {
     },
   ]);
 
-  const updateLead = (id: number, key: string, value: string) => {
+  // Update any property of a lead
+  const updateLead = (id: number, key: keyof Lead, value: string | number) => {
     setLeads((prev) =>
       prev.map((l) => (l.id === id ? { ...l, [key]: value } : l))
     );
@@ -34,6 +47,7 @@ const LeadTable = () => {
 
   return (
     <>
+      {/* Leads Table */}
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
