@@ -32,7 +32,7 @@ const Sidebar = () => {
               exit={{ opacity: 0, x: -10 }}
               className="ml-4 font-black text-xl tracking-tighter text-slate-900"
             >
-              VOYAGE
+              DREAM ESCAPE
             </motion.span>
           )}
         </AnimatePresence>
